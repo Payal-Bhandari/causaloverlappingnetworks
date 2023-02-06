@@ -6,6 +6,8 @@ datasets with related variables. This repository guides in understanding the wor
 ## ION Algorithm
 
 The main aim in ION is if datasets has overlapping variable with at least one other dataset, e.g. if two datasets D1 and D2, which measure variables V1 and V2, then we should be able to learn many of the causal relationships between the observed variables using this set of datasets.
+<img width="630" alt="Screenshot 2023-02-06 at 7 02 27 AM" src="https://user-images.githubusercontent.com/51235238/217006757-928f7301-19fe-4883-9d94-09eea698e3b9.png">
+
 To Implement the ION Algorithm we make use of the Answer Set Programming's Potassco Project called as Clingo. Clingo is used for describing the 
 combinatorial problem of overlapping networks as a logic problem. The Clingo system takes the logic problem of networking as an input and computes the answer sets for the same. 
 
@@ -43,6 +45,10 @@ END.
 - Validate the answer sets generated from the clingo output
   - Check for edges in RandomGraph,
 - Analyze the different answer sets
+
+## Example test cases
+
+Some of the example test cases for the Clingo Code can be found in `test-case.txt` file
 
 ## Usage
 
