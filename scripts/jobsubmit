@@ -1,0 +1,26 @@
+#!/bin/bash
+#SBATCH -N 1
+#SBATCH -n 1
+#SBATCH -c 8
+#SBATCH --mem=500g
+#SBATCH -p qTRDGPU
+#SBATCH -t 7600
+#SBATCH -J d30_10k
+#SBATCH -e ./err/error%A.err
+#SBATCH -o ./out/out%A.out
+#SBATCH -A PSYC0002
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=pbhandari@gsu.edu
+#SBATCH --oversubscribe
+
+sleep 10s
+
+export OMP_NUM_THREADS=1
+export MODULEPATH=/apps/Compilers/modules-3.2.10/Debug-Build/Modules/3.2.10/modulefiles/
+echo $HOSTNAME >&2
+
+source /home/users/pbhandari/anaconda3/bin/activate
+conda activate clng_env
+clingo iontest1.lp -W no-atom-undefined --configuration=tweety -n 0 -a=1  -b=$SLURM_ARRAY_TASK_ID -c=10000 -n=30
+
+sleep 30s
